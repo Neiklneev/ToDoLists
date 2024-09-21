@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block header %}
+Login Here
+{% endblock %}
+
+{% block content %}
+<form action='#' method='POST'>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Username:</label>
+  		<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Username..." name='username'>
+	</div>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Password</label>
+  		<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Type your password..." name='password'>
+	</div>
+	<br>
+	<input type="submit" name="btn" value='Login' style='width:70%;background-color: #0362fc; border-color:white;border-radius: 8px;color:white;height:auto;font-size: 20px; padding:5px;'>
+	
+</form>
+{% endblock %}

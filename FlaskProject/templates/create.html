@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Item Creator
+{% endblock %}
+
+{% block header %}
+Create An Item!
+{% endblock %}
+
+{% block content %}
+<form action='#' method='POST'>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Give your item a title:</label>
+  		<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your item..." name='title'>
+	</div>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Type a quick description of your item</label>
+  		<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g. Do my maths homework..." name='description'>
+	</div>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Enter your item's due date:</label>
+  		<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g. The 31st of February 2025..." name='due_str'>
+	</div>
+	<br>
+	<input type="submit" name="btn" value='Create Item!' style='width:70%;background-color: #0362fc; border-color:white;border-radius: 8px;color:white;height:auto;font-size: 20px; padding:5px;'>
+</form>
+{% endblock %}

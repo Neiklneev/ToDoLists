@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign Up Page
+{% endblock %}
+
+{% block header %}
+Create An Account!
+{% endblock %}
+
+{% block content %}
+<form action='#' method='POST'>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Choose Username</label>
+  		<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Type a name..." name='username'>
+	</div>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Password</label>
+  		<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="SuperSecret@123" name='password'>
+	</div>
+	<div class="mb-3">
+ 		<label for="exampleFormControlInput1" class="form-label">Email address</label>
+  		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name='email'>
+	</div>
+	<br>
+	<input type="submit" name="btn" value='Go!' style='width:70%;background-color: #0362fc; border-color:white;border-radius: 8px;color:white;height:auto;font-size: 20px; padding:5px;'>
+
+</form>
+
+{% endblock %}
