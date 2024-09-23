@@ -44,6 +44,7 @@ class Item(db.Model):
 	title = db.Column(db.String(100), unique=True)
 	description = db.Column(db.String(1000))
 	due_str = db.Column(db.String(100))
+	checked = db.Column(db.Boolean())
 
 
 	def __repr__(self):
@@ -81,7 +82,7 @@ def create_item():
 			title = request.form['title']
 			due_str = request.form['due_str']
 			description = request.form['description']
-			newitem = Item(id_of_creator=current_user.uid, title=title, due_str=due_str, description=description)
+			newitem = Item(id_of_creator=current_user.uid, title=title, due_str=due_str, description=description, checked=False)
 			db.session.add(newitem)
 			db.session.commit()
 			flash('Your item has been added successfully!')
@@ -100,7 +101,12 @@ def create_item():
 			return redirect(url_for('login'))
 
 
-
+@app.route('/checked/<item_id>')
+def check(item_id):
+	item_to_check = Item.query.get(item_id)
+	item_to_check.checked = not item_to_check.checked
+	db.session.commit()
+	return redirect(url_for('home'))
 
 
 @app.route('/delete/<item_id>', methods=['POST', 'GET'])
