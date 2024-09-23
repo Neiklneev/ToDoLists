@@ -13,14 +13,42 @@ Home
 
 {% block content %}
 {% for card in context['items'] %}
+{% if card.checked %}
 <div class="card" style="width:100%">
   <div class="card-body">
-    <h5 class="card-title">{{ card.title }}</h5><br>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Due in: {{ card.due_str }}</h6>
-    <p class="card-text">{{ card.description}}</p>
-    <a href="{{ url_for('delete_item', item_id=card.iid) }}" class="card-link">Delete this item!</a>
+      <a class="btn btn-primary" href="{{ url_for('check', item_id=card.iid) }}">Uncheck</a><br><br>
+        <h5 class="card-title" id='tbchecked'>{{ card.title }}</h5><br>
+        <h6 class="card-subtitle mb-2 text-body-secondary" style='font-color:#888;' id='whynotcheckthis'>Due on: {{ card.due_str }}</h6>
+        <p class="card-text"id='alsotbchecked'>{{ card.description}}</p>
+      <br><br>
+      <a href="{{ url_for('delete_item', item_id=card.iid) }}" class="card-link">Delete this item!</a>
+      <br>
   </div>
 </div>
 <br><br>
+<style>
+  #tbchecked {
+    text-decoration: line-through;
+  }
+  #alsotbchecked {
+    text-decoration: line-through;
+  }
+  #whynotcheckthis {
+    text-decoration: line-through;
+  }
+</style>
+{% else %}
+<div class="card" style="width:100%">
+  <div class="card-body">
+      <a class="btn btn-primary" href="{{ url_for('check', item_id=card.iid) }}">Check!!!</a><br><br>
+        <h5 class="card-title">{{ card.title }}</h5><br>
+        <h6 class="card-subtitle mb-2 text-body-secondary" style='font-color:#888;'>Due on: {{ card.due_str }}</h6>
+        <p class="card-text">{{ card.description}}</p><br>
+      <a href="{{ url_for('delete_item', item_id=card.iid) }}" class="card-link">Delete this item!</a>
+      <br>
+  </div>
+</div>
+<br><br>
+{% endif %}
 {% endfor %}
 {% endblock %}
